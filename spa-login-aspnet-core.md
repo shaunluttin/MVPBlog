@@ -8,15 +8,21 @@
 # Terminology
 
 * <dfn id="ro">resource owner</dfn>
-* <dfn id="client">client</dfn>. Not the same as the user-agent.
-* <dfn id="as">authorization server</dfn>
- * the client uses the authorization server
- * to obtain authorization from the resource owner 
- * via user-agent redirection
- * https://tools.ietf.org/html/rfc6749#section-3
+* <dfn id="client">client</dfn>
+    * Not the same as the user-agent.
+* <dfn id="as">authorization server</dfn>. 
+    * The client uses the authorization server 
+    * to obtain authorization from the resource owner 
+    * via user-agent redirection. 
+    * https://tools.ietf.org/html/rfc6749#section-3
 * <dfn id="ac">authorization code</dfn>
 * <dfn id="ua">user agent</dfn>
 * <dfn id="te">token endpoint</dfn>
+    * The client uses the token endpoint 
+    * to exchange an authorization grant 
+    * for an access token.
+    * The token endpoint typically authenticates the client.
+    * https://tools.ietf.org/html/rfc6749#section-3
 * <dfn id="id_token">id token</dfn>
 * <dfn id="access_token">access token</dfn>
 * <dfn id="client_secret">client secret</dfn>

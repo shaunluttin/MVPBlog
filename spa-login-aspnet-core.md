@@ -10,11 +10,12 @@
 * <dfn id="ro">resource owner</dfn>
 * <dfn id="client">client</dfn>
     * Not the same as the user-agent.
-* <dfn id="as">authorization server</dfn>. 
+* <dfn id="as">authorization endpoint</dfn>
     * The client uses the authorization server 
     * to obtain authorization from the resource owner 
     * via user-agent redirection. 
     * https://tools.ietf.org/html/rfc6749#section-3
+    * [Is this AKA the authorization server?]
 * <dfn id="ac">authorization code</dfn>
 * <dfn id="ua">user agent</dfn>
 * <dfn id="te">token endpoint</dfn>

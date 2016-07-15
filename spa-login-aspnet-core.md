@@ -52,10 +52,9 @@ and can use the access token to access private user data from the resource serve
     * that is capable of granting access to a protected resource.
     * https://tools.ietf.org/html/rfc6749#section-1.1
 * <dfn id="c">client / relying party</dfn>
-    * In OIDC this is called the Relying Party.
-    * In OAuth2 this is called the client. 
-    * Both mean any application that is making protected resource requests
-    * on behalf of the resource owner and with the resource owner's authorization.
+    * This is best thought of as THE APPLICATION THAT YOU ARE BUILDING.
+    * In OIDC this is called the Relying Party; in OAuth2 this is called the client.
+    * Both refer to any application that needs permission to to access protected resources on behalf of an end-user.
     * http://openid.net/specs/openid-connect-core-1_0.html#Terminology 
     * https://tools.ietf.org/html/rfc6749#section-1.1
 * <dfn>resource server</dfn>

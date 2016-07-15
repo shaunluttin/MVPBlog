@@ -47,15 +47,16 @@ and can use the access token to access private user data from the resource serve
     * Common examples are a Web Browser, native application, or OS component that is communicating over HTTP.
     * https://en.wikipedia.org/wiki/User_agent 
 * <dfn id="ro">resource owner</dfn>
-    * An OAuth2 term
-    * meaning any entity 
+    * This is best thought of as THE PERSON USING YOUR APPLICATION.
+    * Specifically, it's an OAuth2 term meaning any entity 
     * that is capable of granting access to a protected resource.
     * https://tools.ietf.org/html/rfc6749#section-1.1
 * <dfn id="c">client / relying party</dfn>
-    * In OIDC this is called the Relying Party.
-    * In OAuth2 this is called the client. 
-    * Both mean any application that is making protected resource requests
-    * on behalf of the resource owner and with the resource owner's authorization.
+    * This is best thought of as THE APPLICATION THAT YOU ARE BUILDING.
+    * In OIDC this is called the Relying Party; 
+    * in OAuth2 this is called the client.
+    * Both refer to any application that needs permission 
+    * to access protected resources on behalf of an person.
     * http://openid.net/specs/openid-connect-core-1_0.html#Terminology 
     * https://tools.ietf.org/html/rfc6749#section-1.1
 * <dfn>resource server</dfn>
@@ -63,7 +64,7 @@ and can use the access token to access private user data from the resource serve
     * that is capable of receiving an access token to unlock those resources.
     * https://tools.ietf.org/html/rfc6749#section-1.1 
 * <dfn id="as">authorization server</dfn>
-    * a server with an authorization endpoint and a token endpoint
+    * A server with an authorization endpoint and a token endpoint
     * the server 1. authenticates the resource owner, 2. obtains authorization from the resource owner, and 3. issues an access token to the client.
     * https://tools.ietf.org/html/rfc6749#section-1.1 
     * https://tools.ietf.org/html/rfc6749#section-3

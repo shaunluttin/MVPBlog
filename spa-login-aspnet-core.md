@@ -8,22 +8,32 @@
 # Terminology
 
 * <dfn id="ro">resource owner</dfn>
-* <dfn id="client">client</dfn>
-    * Not the same as the user-agent.
-* <dfn id="as">authorization endpoint</dfn>
+* <dfn id="ua">user-agent</dfn>
+    * A user-agent is software acting on behalf of the user.
+    * Common examples are a Web Browser, native application, or OS component that is communicating over HTTP.
+    * https://en.wikipedia.org/wiki/User_agent 
+* <dfn id="c">client</dfn>
+* <dfn id="re">redirection endpoint</dfn>
+    * the authorization server uses the redirection endpoint
+    * to return responses to the client
+    * via the resource-owner user agent
+    * https://tools.ietf.org/html/rfc6749#section-3    
+* <dfn id="as">authorization server</dfn>
+    * a server with two endpoints
+    * the authorization endpoint and the token endpoint
+    * https://tools.ietf.org/html/rfc6749#section-3
+* <dfn id="ae">authorization endpoint</dfn>
     * The client uses the authorization server 
     * to obtain authorization from the resource owner 
     * via user-agent redirection. 
     * https://tools.ietf.org/html/rfc6749#section-3
-    * [Is this AKA the authorization server?]
-* <dfn id="ac">authorization code</dfn>
-* <dfn id="ua">user agent</dfn>
 * <dfn id="te">token endpoint</dfn>
     * The client uses the token endpoint 
     * to exchange an authorization grant 
     * for an access token.
     * The token endpoint typically authenticates the client.
     * https://tools.ietf.org/html/rfc6749#section-3
+* <dfn id="ac">authorization code</dfn>
 * <dfn id="id_token">id token</dfn>
 * <dfn id="access_token">access token</dfn>
 * <dfn id="client_secret">client secret</dfn>

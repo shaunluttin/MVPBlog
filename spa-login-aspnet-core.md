@@ -56,7 +56,7 @@ and can use the access token to access private user data from the resource serve
     * In OIDC this is called the Relying Party; 
     * in OAuth2 this is called the client.
     * Both refer to any application that needs permission 
-    * to access protected resources on behalf of an person.
+    * to access protected resources on behalf of a person.
     * http://openid.net/specs/openid-connect-core-1_0.html#Terminology 
     * https://tools.ietf.org/html/rfc6749#section-1.1
 * <dfn>resource server</dfn>
@@ -91,16 +91,16 @@ and can use the access token to access private user data from the resource serve
 
 # Login Flows and Single Page Applications
 
-## Code
+## Code (OAuth2 & OIDC)
 
-OAuth 2 Overview
+OAuth2 Overview
 
 * uses an authorization server as an intermediary between the client and the resource owner
 * the client directs the resource owner to an authorization server
 * the authorization server 
- * authenticates the resource owner, 
- * obtains authorization
- * directs the resource owner back to the client with an authorization code
+    * authenticates the resource owner, 
+    * obtains authorization
+    * directs the resource owner back to the client with an authorization code
 
 OpenId Connect Overview
 
@@ -111,7 +111,7 @@ OpenId Connect Overview
 Benefits
 
 * the resource owner's credentials are never shared with the client
-* the authorization server can authenticate the client
+* the authorization server can authenticate the client (optionally)
 * the authorization server passes the access token directly to the client without exposing it to the user-agent
 
 Use Cases
@@ -123,12 +123,85 @@ Sources
 * https://tools.ietf.org/html/rfc6749#section-1.3.1
 * http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
 
-## Implicit
+## Implicit (OAuth2 & OIDC)
 
-## Hybrid
+> implicit adj. Having no reservations or doubts; unquestioning or unconditional; usually said of faith or trust. 
 
-## Client Credentials / Resource Owner Password Grants
+OAuth 2 Overview
+
+* same as the `code` flow with the following differences: 
+* the authorization server 
+    * does NOT direct the resource owner back to the client with an authorization code
+    * does NOT authenticate the client before issuing the access code
+    * instead, after authentication and authorizations, 
+    * immedicately directs the resource owner back to the client with an acces code
+
+OpenId Connect Overview
+
+* the authorization endpoint
+* returns an access token and id token 
+* directly to the client
+* via the user agent
+
+Benefits
+
+* improved responsiveness of browser-based applications by reducing round trips
+
+Risks
+
+* the authorization server exposes the user-agent to the access token
+* the authorization server does not authenticate the client
+
+Use Cases
+
+* Relying parties that run in a web browser using JavaScript.
+
+Sources
+
+* https://www.wordnik.com/words/implicit
+* https://tools.ietf.org/html/rfc6749#section-1.3.2 
+* http://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth
+
+## Resource Owner Password Grants (OAuth2)
+
+OAuth2 Overview
+
+* the person passes username/password to the client via the user-agent
+* the client passes the username/password to the authorization server
+* the authorization server responds with an access token
+
+Risks
+
+* the client has direct access to the person's username/password
+
+Use Cases
+
+* There is high trust between the resource owner and the client. 
+* E.g. client is part of the operating system / is a highly privileged application.
+
+Sources
+
+* https://tools.ietf.org/html/rfc6749#section-1.3.3
+
+## Client Credentials (OAuth2)
+
+OAuth2 Overview
+
+Use Cases
+
+* When the client is accessing its own resources, or
+* the client is accessing resources for which it has already arranged access permission.
+
+Sources
+
+* https://tools.ietf.org/html/rfc6749#section-1.3.4
+
+## Hybrid  (OIDC)
+
+## Combined Flows
 
 # Sources
 
-http://kevinchalet.com/2016/07/13/creating-your-own-openid-connect-server-with-asos-choosing-the-right-flows/
+* http://kevinchalet.com/2016/07/13/creating-your-own-openid-connect-server-with-asos-choosing-the-right-flows/
+* https://github.com/SoftwareMasons/aurelia-openiddict/
+* https://github.com/openiddict/openiddict-core

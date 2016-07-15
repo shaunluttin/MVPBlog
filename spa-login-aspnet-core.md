@@ -10,6 +10,10 @@
 * <dfn id="ro">resource owner</dfn>
 * <dfn id="client">client</dfn>. Not the same as the user-agent.
 * <dfn id="as">authorization server</dfn>
+ * the client uses the authorization server
+ * to obtain authorization from the resource owner 
+ * via user-agent redirection
+ * https://tools.ietf.org/html/rfc6749#section-3
 * <dfn id="ac">authorization code</dfn>
 * <dfn id="ua">user agent</dfn>
 * <dfn id="te">token endpoint</dfn>
@@ -21,7 +25,7 @@
 
 ## Code
 
-OAuth 2 Steps
+OAuth 2 Overview
 
 * uses an authorization server as an intermediary between the client and the resource owner
 * the client directs the resource owner to an authorization server
@@ -30,7 +34,7 @@ OAuth 2 Steps
  * obtains authorization
  * directs the resource owner back to the client with an authorization code
 
-OpenId Connect Steps
+OpenId Connect Overview
 
 * all tokens are returned from the token endpoint
 * the token endpoint returns an authorization code to the client
@@ -48,8 +52,8 @@ Use Cases
 
 Sources
 
-* OpenId Connect, http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
-* OAuth 2, https://tools.ietf.org/html/rfc6749#section-1.3.1 
+* https://tools.ietf.org/html/rfc6749#section-1.3.1
+* http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
 
 ## Implicit
 

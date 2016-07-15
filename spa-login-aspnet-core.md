@@ -3,7 +3,7 @@
 # Meta
 
 * Moratorium: Approx 20 hours, then make another decision. 
-* 15 July 2016, 1 hour
+* 15 July 2016, 4 hours
 
 # Terminology
 
@@ -196,7 +196,20 @@ Sources
 
 * https://tools.ietf.org/html/rfc6749#section-1.3.4
 
-## Hybrid  (OIDC)
+## Hybrid (OIDC)
+
+OpenID Connect Overview
+
+Response Type Combinations
+
+* `code token` [Why do we need the code when we already have an access_token?]
+* `code id_token` [This makes sense. We have an id_token and can retrieve an access_token when needed.]
+* `id_token token` [This seems just like the implicit flow.] 
+* `code id_token token` [Why?]
+
+Sources
+
+* http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth
 
 ## Combined Flows
 
@@ -205,3 +218,4 @@ Sources
 * http://kevinchalet.com/2016/07/13/creating-your-own-openid-connect-server-with-asos-choosing-the-right-flows/
 * https://github.com/SoftwareMasons/aurelia-openiddict/
 * https://github.com/openiddict/openiddict-core
+* https://leastprivilege.com/2016/01/17/which-openid-connectoauth-2-o-flow-is-the-right-one Interesting discussion of the hybrid flow. 

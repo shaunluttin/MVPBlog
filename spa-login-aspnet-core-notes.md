@@ -50,9 +50,25 @@
     * via the resource-owner user agent
     * https://tools.ietf.org/html/rfc6749#section-3    
 * <dfn id="auth_code">authorization code</dfn>
+    * The authorization code represents the end-user's 
+    * consent to let YourSPA access protected resources.
+    * The authorization code does not work alone, though.  
+    * We need to present it along with YourSPA's client_secret 
+    * to obtain as access_token.
 * <dfn id="id_token">id token</dfn>
+    * This is verifiable.
+    * 
 * <dfn id="access_token">access token</dfn>
+    * The access token is a string representing an authorization issued to a relying party (aka a client).
+    * Possessing an access token means three things have happened: 
+    * 1. The authorization server has confirmed the end-users identity. 
+    * 2. The end-user has given consent for YourSPA to access protected resources.
+    * 3. YourSPA has verified its identity via presentation its client_secret.
+    * 4. and YourSPA has verified its possession of the authorization code.
+    * The access token is not verifiable.
 * <dfn id="client_secret">client secret</dfn>
+    * This is not a real secret, because we store it on the client, which is not entirely secure.
+    * 
 
 # Login Flows and Single Page Applications
 
@@ -82,6 +98,7 @@ Benefits
 Use Cases
 
 * clients that can securely maintain a client secret between themselves and the Authorization Server
+* note: it is tough to hide the client secret thoroughly.
 
 Sources
 
@@ -156,6 +173,7 @@ Use Cases
 
 * When the client is accessing its own resources, or
 * the client is accessing resources for which it has already arranged access permission.
+* E.g. machine-to-machine communication.
 
 Sources
 
@@ -172,9 +190,15 @@ Response Type Combinations
 * `id_token token` [This seems just like the implicit flow.] 
 * `code id_token token` [Why?]
 
+Benefits
+
+* This can compliment the code flow by including the id_token in the initial response from the authorization endpoint
+* Since the id_token is verifiable, we can validate it before requesting the access token.
+
 Sources
 
 * http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth
+* http://openid.net/specs/oauth-v2-multiple-response-types-1_0.html
 
 ## Combined Flows
 
@@ -183,4 +207,5 @@ Sources
 * http://kevinchalet.com/2016/07/13/creating-your-own-openid-connect-server-with-asos-choosing-the-right-flows/
 * https://github.com/SoftwareMasons/aurelia-openiddict/
 * https://github.com/openiddict/openiddict-core
-* https://leastprivilege.com/2016/01/17/which-openid-connectoauth-2-o-flow-is-the-right-one Interesting discussion of the hybrid flow. 
+* https://leastprivilege.com/2016/01/17/which-openid-connectoauth-2-o-flow-is-the-right-one 
+    * Interesting discussion of the hybrid flow. 

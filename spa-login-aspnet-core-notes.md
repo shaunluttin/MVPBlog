@@ -52,9 +52,11 @@
 * <dfn id="auth_code">authorization code</dfn>
     * The authorization code represents the end-user's 
     * consent to let YourSPA access protected resources.
-    * The authorization code does not work alone, though.  
-    * We need to present it along with YourSPA's client_secret 
-    * to obtain as access_token.
+    * The authorization code, though, does not work to access protected resources;  
+    * rather, protected resource access requires an access token.
+    * The audience for an authorization code is a token endpoint.
+    * We can get an access token from the token endpoint 
+    * by presenting the authorization code AND YourSPA's client secret.
 * <dfn id="id_token">id token</dfn>
     * This is verifiable.
     * 
@@ -65,7 +67,11 @@
     * 2. The end-user has given consent for YourSPA to access protected resources.
     * 3. YourSPA has verified its identity via presentation its client_secret.
     * 4. and YourSPA has verified its possession of the authorization code.
-    * The access token is not verifiable.
+    * The access token 
+        * is not verifiable.
+        * is opaque to the client. 
+        * represents specific scopes and durations that the resource owner granted (and the resource & authorization servers enforce).
+    * https://tools.ietf.org/html/rfc6749#section-1.4
 * <dfn id="client_secret">client secret</dfn>
     * This is not a real secret, because we store it on the client, which is not entirely secure.
     * 

@@ -48,18 +48,29 @@
     * the authorization server uses the redirection endpoint
     * to return responses to the client
     * via the resource-owner user agent
-    * https://tools.ietf.org/html/rfc6749#section-3    
+    * https://tools.ietf.org/html/rfc6749#section-3   
+* <dfn id="auth_grant">authorization grant</dfn>
+    * The authorization grant is a credential
+    * that represents the resource owner's consent
+    * to let an application access its protected resources. 
+    * An application in possession of this credential, 
+    * can access the end-users stuff.
 * <dfn id="auth_code">authorization code</dfn>
-    * The authorization code represents the end-user's 
+    * The authorization code is a type of authorization grant. 
+    * That is, it represents the end-user's 
     * consent to let YourSPA access protected resources.
     * The authorization code, though, does not work to access protected resources;  
-    * rather, protected resource access requires an access token.
+    * rather, protected resource access requires an upgrade to an access token.
     * The audience for an authorization code is a token endpoint.
     * We can get an access token from the token endpoint 
     * by presenting the authorization code AND YourSPA's client secret.
+    * Why not just use an authorization code to access protected resources?
+        * First, the authorization code only works for the relying party, 
+        * which has to verify its identity before obtaining an access token. 
+        * Second, we can pass the authorization code to the user-agent without worrying too much about security, 
+        * and be more careful with the access token by passing it directly to the relying party.
 * <dfn id="id_token">id token</dfn>
     * This is verifiable.
-    * 
 * <dfn id="access_token">access token</dfn>
     * The access token is a string representing an authorization issued to a relying party (aka a client).
     * Possessing an access token means three things have happened: 
@@ -75,12 +86,15 @@
 * <dfn id="client_secret">client secret</dfn>
     * This is not a real secret, because we store it on the client, which is not entirely secure.
     * 
+* <dfn id="refresh_token">refresh token</dfn>
 
 # Login Flows and Single Page Applications
 
 ## Code (OAuth2 & OIDC)
 
 OAuth2 Overview
+
+The authorization grant, in this case, is an authorization code. 
 
 * uses an authorization server as an intermediary between the client and the resource owner
 * the client directs the resource owner to an authorization server
@@ -116,6 +130,8 @@ Sources
 > implicit adj. Having no reservations or doubts; unquestioning or unconditional; usually said of faith or trust. 
 
 OAuth 2 Overview
+
+The authorization grant, in this case, is non-existant!
 
 * same as the `code` flow with the following differences: 
 * the authorization server 
@@ -154,6 +170,8 @@ Sources
 
 OAuth2 Overview
 
+The authorization grant, in this case, is...
+
 * the person passes username/password to the client via the user-agent
 * the client passes the username/password to the authorization server
 * the authorization server responds with an access token
@@ -175,6 +193,8 @@ Sources
 
 OAuth2 Overview
 
+The authorization grant, in this case, is...
+
 Use Cases
 
 * When the client is accessing its own resources, or
@@ -188,6 +208,7 @@ Sources
 ## Hybrid (OIDC)
 
 OpenID Connect Overview
+
 
 Response Type Combinations
 

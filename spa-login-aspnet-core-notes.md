@@ -99,12 +99,12 @@ The authorization grant, in this case, is an authorization code.
 The authorization server does not trust FoobarApp with people's usernames & passwords,
 because FoobarApp could store those credentials, and use them to completely impersonate people.
 
-No. `username/password --> FoobarApp (risk: might store it) --> authorization server -->`
+No. `username/password --> FoobarApp (risk: might store it) --> authorization server`
 
 The authorization server does trust the user-agent with usernames & passwords, 
 as long as the user-agent has a known policy of asking a person before storing zer credentials (e.g. major web browsers).
 
-Yes. `username/password --> user-agent --> authorization server -->`
+Yes. `username/password --> user-agent --> authorization server`
 
 The authorization server does not trust the user-agent with access tokens,
 because the user-agent must store the token before passing it to FoobarApp.
@@ -117,9 +117,9 @@ No. `access token --> user agent (must store it, risk: might reveal it) --> Foob
 The authorization server does trust FoobarApp with people's access tokens, 
 because access tokens are both time & scope limited, and 
 FoobarApp stores access tokens in a less public location than user-agents do. 
-[TODO Why is FoobarApp's storeage considered to be more secure than the user-agent's storage?]
+[TODO Why is FoobarApp's storage considered to be more secure than the user-agent's storage?]
 
-Yes. `authorization server --> access token --> FoobarApp -->`
+Yes. `authorization server --> access token --> FoobarApp`
 
 ### OAuth2 Overview
 

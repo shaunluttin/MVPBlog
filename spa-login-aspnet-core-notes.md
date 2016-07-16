@@ -97,24 +97,26 @@ The authorization grant, in this case, is an authorization code.
 ### Code Grant Trust Levels
 
 The authorization server does not trust FoobarApp with people's usernames & passwords,
-because FoobarApp could store those credentials, and use them to completely impersonate the user.
+because FoobarApp could store those credentials, and use them to completely impersonate people.
 
 No. `username/password --> FoobarApp (risk: might store it) --> authorization server -->`
 
 The authorization server does trust the user-agent with usernames & passwords, 
-as long as the user-agent has a known policy of asking before storing those (e.g. major web browsers).
+as long as the user-agent has a known policy of asking a person before storing zer credentials (e.g. major web browsers).
 
 Yes. `username/password --> user-agent --> authorization server -->`
 
 The authorization server does not trust the user-agent with access tokens,
 because the user-agent must store the token before passing it to FoobarApp.
-The problem there is that a malicious person could extract someones token from the user-agent, 
-and then use it to access that person's protected resources.
+The problem with storage is that the user-agent might be a public place. 
+A malicious person could extract someone's token from e.g. a web browser at a library kiosk,
+and then use the token to access that person's protected resources.
 
-No.  `access token --> user agent (must store it, risk: might reveal it) --> FoobarApp`
+No. `access token --> user agent (must store it, risk: might reveal it) --> FoobarApp`
 
 The authorization server does trust FoobarApp with people's access tokens, 
-because access tokens are both time & scope limited.
+because access tokens are both time & scope limited, and 
+FoobarApp stores those tokens in a less public location than user-agents do.
 
 Yes. `authorization server --> access token --> FoobarApp -->`
 

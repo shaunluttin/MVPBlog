@@ -96,26 +96,26 @@ The authorization grant, in this case, is an authorization code.
 
 Trust Levels
 
-* The authorization server does not trust FoobarApp with people's usernames & passwords,
-* because FoobarApp could store those credentials, and use them to obtain full impersonation power.
+The authorization server does not trust FoobarApp with people's usernames & passwords,
+because FoobarApp could store those credentials, and use them to obtain full impersonation power.
 
-* No.  `username/password --> FoobarApp (risk: might store it) --> authorization server -->`
+No.  `username/password --> FoobarApp (risk: might store it) --> authorization server -->`
 
-* The authorization server does trust the user-agent with usernames & passwords, 
-* because the user-agent will not store those.
+The authorization server does trust the user-agent with usernames & passwords, 
+because the user-agent will not store those.
 
-* Yes. `username/password --> user-agent --> authorization server -->`
+Yes. `username/password --> user-agent --> authorization server -->`
 
-* The authorization server does not trust the user-agent with access tokens,
-* because the user-agent must store the token before passing it to FoobarApp.
-* A malicious person could extract the token and use it to access a person's protected resources.
+The authorization server does not trust the user-agent with access tokens,
+because the user-agent must store the token before passing it to FoobarApp.
+A malicious person could extract the token and use it to access a person's protected resources.
 
-* No.  `access token --> user agent (must store it, risk: might reveal it) --> FoobarApp`
+No.  `access token --> user agent (must store it, risk: might reveal it) --> FoobarApp`
 
-* The authorization server does trust FoobarApp with people's access tokens, 
-* because access tokens are both time & scope limited.
+The authorization server does trust FoobarApp with people's access tokens, 
+because access tokens are both time & scope limited.
 
-* Yes. `authorization server --> access token --> FoobarApp -->`
+Yes. `authorization server --> access token --> FoobarApp -->`
 
 OAuth2 Overview
 

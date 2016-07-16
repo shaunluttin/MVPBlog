@@ -58,12 +58,12 @@
 * <dfn id="auth_code">authorization code</dfn>
     * The authorization code is a type of authorization grant. 
     * That is, it represents the end-user's 
-    * consent to let YourSPA access protected resources.
+    * consent to let FoobarApp access protected resources.
     * The authorization code, though, does not work to access protected resources;  
     * rather, protected resource access requires an upgrade to an access token.
     * The audience for an authorization code is a token endpoint.
     * We can get an access token from the token endpoint 
-    * by presenting the authorization code AND YourSPA's client secret.
+    * by presenting the authorization code AND FoobarApp's client secret.
     * Why not just use an authorization code to access protected resources?
         * First, the authorization code only works for the relying party, 
         * which has to verify its identity before obtaining an access token. 
@@ -75,9 +75,9 @@
     * The access token is a string representing an authorization issued to a relying party (aka a client).
     * Possessing an access token means three things have happened: 
     * 1. The authorization server has confirmed the end-users identity. 
-    * 2. The end-user has given consent for YourSPA to access protected resources.
-    * 3. YourSPA has verified its identity via presentation its client_secret.
-    * 4. and YourSPA has verified its possession of the authorization code.
+    * 2. The end-user has given consent for FoobarApp to access protected resources.
+    * 3. FoobarApp has verified its identity via presentation its client_secret.
+    * 4. and FoobarApp has verified its possession of the authorization code.
     * The access token 
         * is not verifiable.
         * is opaque to the client. 
@@ -92,9 +92,32 @@
 
 ## Code (OAuth2 & OIDC)
 
-OAuth2 Overview
+The authorization grant, in this case, is an authorization code.
 
-The authorization grant, in this case, is an authorization code. 
+Trust Levels
+
+* The authorization server does not trust FoobarApp with people's usernames & passwords,
+* because FoobarApp could store those credentials, and use them to obtain full impersonation power.
+
+* No.  `username/password --> FoobarApp (risk: might store it) --> authorization server -->`
+
+* The authorization server does trust the user-agent with usernames & passwords, 
+* because the user-agent will not store those.
+
+* Yes. `username/password --> user-agent --> authorization server -->`
+
+* The authorization server does not trust the user-agent with access tokens,
+* because the user-agent must store the token before passing it to FoobarApp.
+* A malicious person could extract the token and use it to access a person's protected resources.
+
+* No.  `access token --> user agent (must store it, risk: might reveal it) --> FoobarApp`
+
+* The authorization server does trust FoobarApp with people's access tokens, 
+* because access tokens are both time & scope limited.
+
+* Yes. `authorization server --> access token --> FoobarApp -->`
+
+OAuth2 Overview
 
 * uses an authorization server as an intermediary between the client and the resource owner
 * the client directs the resource owner to an authorization server

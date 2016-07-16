@@ -3,7 +3,7 @@
 # Meta
 
 * Moratorium: Approx 20 hours, then make another decision. 
-* 15 July 2016, 4 hours
+* 15 July 2016, 5.5 hours
 
 # Terminology
 

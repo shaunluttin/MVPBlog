@@ -90,11 +90,11 @@
 
 # Login Flows and Single Page Applications
 
-## Code (OAuth2 & OIDC)
+##  Code Grant (OAuth2 & OIDC)
 
 The authorization grant, in this case, is an authorization code.
 
-### Trust Levels
+### Code Grant Trust Levels
 
 The authorization server does not trust FoobarApp with people's usernames & passwords,
 because FoobarApp could store those credentials, and use them to completely impersonate the user.
@@ -149,7 +149,7 @@ Yes. `authorization server --> access token --> FoobarApp -->`
 * https://tools.ietf.org/html/rfc6749#section-1.3.1
 * http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
 
-## Implicit (OAuth2 & OIDC)
+## Implicit Grant (OAuth2 & OIDC)
 
 > implicit adj. Having no reservations or doubts; unquestioning or unconditional; usually said of faith or trust. 
 
@@ -190,7 +190,7 @@ The authorization grant, in this case, is non-existant!
 * https://tools.ietf.org/html/rfc6749#section-1.3.2 
 * http://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth
 
-## Resource Owner Password Grants (OAuth2)
+## Resource Owner Password Grant (OAuth2)
 
 ### OAuth2 Overview
 
@@ -213,7 +213,7 @@ The authorization grant, in this case, is...
 
 * https://tools.ietf.org/html/rfc6749#section-1.3.3
 
-## Client Credentials (OAuth2)
+## Client Credentials Grant (OAuth2)
 
 ### OAuth2 Overview
 

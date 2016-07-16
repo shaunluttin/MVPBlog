@@ -94,7 +94,7 @@
 
 The authorization grant, in this case, is an authorization code.
 
-Trust Levels
+### Trust Levels
 
 The authorization server does not trust FoobarApp with people's usernames & passwords,
 because FoobarApp could store those credentials, and use them to completely impersonate the user.
@@ -118,7 +118,7 @@ because access tokens are both time & scope limited.
 
 Yes. `authorization server --> access token --> FoobarApp -->`
 
-OAuth2 Overview
+### OAuth2 Overview
 
 * uses an authorization server as an intermediary between the client and the resource owner
 * the client directs the resource owner to an authorization server
@@ -127,24 +127,24 @@ OAuth2 Overview
     * obtains authorization
     * directs the resource owner back to the client with an authorization code
 
-OpenId Connect Overview
+### OpenId Connect Overview
 
 * all tokens are returned from the token endpoint
 * the token endpoint returns an authorization code to the client
 * the client can exchange the authorization code for an ID Token and Access Token. 
 
-Benefits
+### Benefits
 
 * the resource owner's credentials are never shared with the client
 * the authorization server can authenticate the client (optionally)
 * the authorization server passes the access token directly to the client without exposing it to the user-agent
 
-Use Cases
+### Use Cases
 
 * clients that can securely maintain a client secret between themselves and the Authorization Server
 * note: it is tough to hide the client secret thoroughly.
 
-Sources
+### Sources
 
 * https://tools.ietf.org/html/rfc6749#section-1.3.1
 * http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth
@@ -153,7 +153,7 @@ Sources
 
 > implicit adj. Having no reservations or doubts; unquestioning or unconditional; usually said of faith or trust. 
 
-OAuth 2 Overview
+### OAuth 2 Overview
 
 The authorization grant, in this case, is non-existant!
 
@@ -164,27 +164,27 @@ The authorization grant, in this case, is non-existant!
     * instead, after authentication and authorizations, 
     * immedicately directs the resource owner back to the client with an acces code
 
-OpenId Connect Overview
+### OpenId Connect Overview
 
 * the authorization endpoint
 * returns an access token and id token 
 * directly to the client
 * via the user agent
 
-Benefits
+### Benefits
 
 * improved responsiveness of browser-based applications by reducing round trips
 
-Risks
+### Risks
 
 * the authorization server exposes the user-agent to the access token
 * the authorization server does not authenticate the client
 
-Use Cases
+### Use Cases
 
 * Relying parties that run in a web browser using JavaScript.
 
-Sources
+### Sources
 
 * https://www.wordnik.com/words/implicit
 * https://tools.ietf.org/html/rfc6749#section-1.3.2 
@@ -192,7 +192,7 @@ Sources
 
 ## Resource Owner Password Grants (OAuth2)
 
-OAuth2 Overview
+### OAuth2 Overview
 
 The authorization grant, in this case, is...
 
@@ -200,53 +200,54 @@ The authorization grant, in this case, is...
 * the client passes the username/password to the authorization server
 * the authorization server responds with an access token
 
-Risks
+### Risks
 
 * the client has direct access to the person's username/password
 
-Use Cases
+### Use Cases
 
 * There is high trust between the resource owner and the client. 
 * E.g. client is part of the operating system / is a highly privileged application.
 
-Sources
+### Sources
 
 * https://tools.ietf.org/html/rfc6749#section-1.3.3
 
 ## Client Credentials (OAuth2)
 
-OAuth2 Overview
+### OAuth2 Overview
 
 The authorization grant, in this case, is...
 
-Use Cases
+### Use Cases
 
 * When the client is accessing its own resources, or
 * the client is accessing resources for which it has already arranged access permission.
 * E.g. machine-to-machine communication.
 
-Sources
+### Sources
 
 * https://tools.ietf.org/html/rfc6749#section-1.3.4
 
 ## Hybrid (OIDC)
 
-OpenID Connect Overview
+### OpenID Connect Overview
 
+TODO 
 
-Response Type Combinations
+### Response Type Combinations
 
 * `code token` [Why do we need the code when we already have an access_token?]
 * `code id_token` [This makes sense. We have an id_token and can retrieve an access_token when needed.]
 * `id_token token` [This seems just like the implicit flow.] 
 * `code id_token token` [Why?]
 
-Benefits
+### Benefits
 
 * This can compliment the code flow by including the id_token in the initial response from the authorization endpoint
 * Since the id_token is verifiable, we can validate it before requesting the access token.
 
-Sources
+### Sources
 
 * http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth
 * http://openid.net/specs/oauth-v2-multiple-response-types-1_0.html

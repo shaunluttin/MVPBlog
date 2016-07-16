@@ -116,7 +116,8 @@ No. `access token --> user agent (must store it, risk: might reveal it) --> Foob
 
 The authorization server does trust FoobarApp with people's access tokens, 
 because access tokens are both time & scope limited, and 
-FoobarApp stores those tokens in a less public location than user-agents do.
+FoobarApp stores access tokens in a less public location than user-agents do. 
+[TODO Why is FoobarApp's storeage considered to be more secure than the user-agent's storage?]
 
 Yes. `authorization server --> access token --> FoobarApp -->`
 

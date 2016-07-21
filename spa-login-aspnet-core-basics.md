@@ -42,3 +42,4 @@ UseTwitterAuthentication
 
 UseOpenIdConnectAuthentication 
 * is AuthenticationMiddleware
+* uses the OpenID Connect protocol

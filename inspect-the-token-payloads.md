@@ -14,9 +14,9 @@ The Authorization Code Flow goes through the following steps.
 ### (1) Client prepares an Authentication Request containing the desired request parameters.
 ### (2) Client sends the request to the Authorization Server.
 
-Step one and two happen thru a 302 redirection. First, the end-user requests login, then the client redirects us to Google.
+Step one and two happen thru a 302 redirection.
 
-Request
+**Request** the end-user requests login.
 
 ```
 GET http://localhost:5000/ HTTP/1.1
@@ -28,7 +28,7 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 ```
 
-Response
+**Response** the client redirects us to Google.
 
 ```
 HTTP/1.1 302 Found
@@ -43,9 +43,7 @@ Set-Cookie: .AspNetCore.Correlation.OpenIdConnect.7qk2gpy0FmiU5_dPhzR-253GfgSfmQ
 ### (3) Authorization Server Authenticates the End-User.
 ### (4) Authorization Server obtains End-User Consent/Authorization.
 
-The is the request that comes out of the above 302 request. The response is Google's sign in page.
-
-Request
+**Request** The is the request that comes out of the above 302 request.
 
 ```
 GET https://accounts.google.com/o/oauth2/v2/auth?client_id=384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fsignin-oidc&response_type=code&scope=openid%20profile&response_mode=form_post&nonce=636048136738461505.ZThhMWU4NmItMjViZC00ZTBiLTk0OGEtOWE2NDZhMGExZWFhMTI5YzEwZjUtNjQ5NC00NmRmLTg4M2UtZWU3ZTdhZTIyZmMz&state=CfDJ8EflEPCuZdJHgUYffW9I8S9QcpFGIHbLBcEZ9qY7XA88hVtughcKQ7A0SUjY9zVPfdUw14r4_52B5qTwFW91eTkylhGGDQPfiJH_wIURfy8WhxEJ06XN7qh6kRtxqX8XcxkraWycktJC6srDsORDS1KbCj83j6gzhyVn-Nys6JlcMHqQjeUKS3T1Jt_eeSc5p7Uat4U7XaNivIQmdJgmp2V5apJVCePxxNrzZuv6uLBODBKdbRg0As7mor2P883FkH1f1U3jaZh22CTsM4jYNhftZSnh3CJALW8FZ2kZrBv38OFst4O1RxKtGZ5n0Gfr5NTBQscJ4s9LlDkkRN4sLVpPfmJyrmDaXF6e0Kbu-VKWVs83vrCTC2hQVHDS5XGb8g HTTP/1.1
@@ -59,7 +57,7 @@ Cookie: NID=82=b_nTwTiq9yav5BmNelgfLlcj_elv-TchNjXLyouF86Yskd3Fu1FAyQZrgVi0p4Cub
 Connection: keep-alive
 ```
 
-Response
+**Response**  The response is Google's HTML sign in page.
 
 ```
 HTTP/1.1 200 OK
@@ -88,9 +86,7 @@ Content-Length: 1611
 
 ### (5) Authorization Server sends the End-User back to the Client with an Authorization Code.
 
-This is Google's request back to the web client after the user has completed authentication and authorization. 
-
-Request
+**Request** After the user has completed authentication/authorization, Google directs the user-agent back to the web client.
 
 ```
 POST http://localhost:5000/signin-oidc HTTP/1.1
@@ -115,7 +111,7 @@ This is the parsed message body:
 * session_state=2d2c955740244bd6b984b51d68ffab7f5eb6ff9f..69f8
 * prompt=none
 
-Response
+**Response** The client redirects the user-agent back home.
 
 ```
 HTTP/1.1 302 Found
@@ -134,7 +130,7 @@ Set-Cookie: .AspNetCore.Cookies=CfDJ8EflEPCuZdJHgUYffW9I8S8sPzsQNIfCdq1N6aFjeECs
 ### (6) Client requests a response using the Authorization Code at the Token Endpoint.
 ### (7) Client receives a response that contains an ID Token and Access Token in the response body.
 
-Request
+**Request** Behind the scenes, the client makes a request to Googles token endpoint.
 
 ```
 POST https://www.googleapis.com/oauth2/v4/token HTTP/1.1
@@ -185,5 +181,82 @@ Content-Length: 1517
 
 ### (8) Client validates the ID token and retrieves the End-User's Subject Identifier.
 
-Both the access_token and the id_token as JSON Web Tokens. We can parse them.
+The `access_token` is from the OAuth 2.0 specification. It has an arbitrary format that the resource server's security requirements. 
 
+The `id_token` is a JSON Web Token. We can parse the `id_token` to find out limited user information. For further user information, we query the resource server. 
+
+For example, here is the parsed `id_token` that we obtained from Google. Note that it contains:
+* Some user profile information; if this isn't enough, we can use the `access_token` to request the resource server for more.
+* The `sub` property, which is how Google uniquely and persistently identifies the user
+* The `iss` property, which is how Google uniquely and persistently identifies itself as an identity provider
+* Together the `iss` and `sub` create a unique UserID.
+
+```
+{
+ alg: "RS256",
+ kid: "d9f843ff55d0888f3479402f96dfb774c2b673c8"
+}.
+{
+ iss: "https://accounts.google.com",
+ at_hash: "spTGVz5NUtYSoVnQBSbT7Q",
+ sub: "104244879444590230181",
+ email_verified: true,
+ nonce: "636048136738461505.ZThhMWU4NmItMjViZC00ZTBiLTk0OGEtOWE2NDZhMGExZWFhMTI5YzEwZjUtNjQ5NC00NmRmLTg4M2UtZWU3ZTdhZTIyZmMz",
+ aud: "384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com",
+ azp: "384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com",
+ hd: "shaunluttin.com",
+ email: "admin@shaunluttin.com",
+ iat: 1469216872,
+ exp: 1469220472,
+ name: "Shaun Luttin",
+ picture: "https://lh3.googleusercontent.com/-QPNUd8fpZt4/AAAAAAAAAAI/AAAAAAAAAgw/FpdNrSrYvJM/s96-c/photo.jpg",
+ given_name: "Shaun",
+ family_name: "Luttin",
+ locale: "en"
+}.
+[signature]
+```
+
+### (9) OPTIONAL: Client uses the access token to query the resource server.
+
+**Request** Notice the inclusion of the Bearer access token.
+
+```
+GET https://www.googleapis.com/oauth2/v3/userinfo HTTP/1.1
+Connection: Keep-Alive
+Accept-Encoding: gzip, deflate
+Authorization: Bearer ya29.CjQoA2z_7FMTHZ2KOip5PIG2iVaAbU8RyzRASRV1mrIv8bjt-t10EIb4vWxDY2yudbS-UeVv
+User-Agent: Microsoft ASP.NET Core OpenIdConnect middleware
+Host: www.googleapis.com
+```
+
+**Response**
+
+```
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: Mon, 01 Jan 1990 00:00:00 GMT
+Date: Fri, 22 Jul 2016 19:47:52 GMT
+Vary: Origin
+Vary: X-Origin
+Content-Type: application/json; charset=UTF-8
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Server: GSE
+Alternate-Protocol: 443:quic
+Alt-Svc: quic=":443"; ma=2592000; v="36,35,34,33,32,31,30,29,28,27,26,25"
+Content-Length: 307
+
+{
+ "sub": "104244879444590230181",
+ "name": "Shaun Luttin",
+ "given_name": "Shaun",
+ "family_name": "Luttin",
+ "profile": "https://plus.google.com/+ShaunLuttin",
+ "picture": "https://lh3.googleusercontent.com/-QPNUd8fpZt4/AAAAAAAAAAI/AAAAAAAAAgw/FpdNrSrYvJM/photo.jpg",
+ "gender": "male",
+ "locale": "en"
+}
+```

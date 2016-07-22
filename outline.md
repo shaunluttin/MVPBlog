@@ -28,7 +28,18 @@ Current alternatives for SPA login.
 
 The mechanics of SPA login.
 
-Implementing SPA login with ASP.NET Core.
+* OAuth Credential Types
+* OpenID Connect Flows
+
+Implementing OpenIdConnect SPA login with ASP.NET Core.
+
+* Using Google as an identity provider
+    * ID Token from Google
+    * Access Token for Google's resource servers
+* Using OpenIddict as an identity provider
+    * ID Token from your servers
+    * Access Token for your resource servers
+* Checking the bearer token at your resource servers
 
 Inspecting the SPA login traffic from Windows 10.
 

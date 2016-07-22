@@ -76,7 +76,8 @@ Physiology
 
 # Inspecting the SPA login traffic from Windows 10.
 
-* Fiddler
-* WireShark
+* Fiddler http://www.telerik.com/fiddler
+* WireShark https://www.wireshark.org
+* Netmon https://www.microsoft.com/en-us/download/details.aspx?id=4865
 * ASP.NET Core HTTP Logging
 * IPv6 Capture

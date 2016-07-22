@@ -7,3 +7,4 @@
 * 19 July 2016, 4 hours
 * 20 July 2016, 5 hours (How do we capture & decrypt OpenID Connect Code Flow Traffic?)
 * 22 July 2016, 2 hours (Outline)
+* 22 July 2016, 2 hours (Fiddler analysis)

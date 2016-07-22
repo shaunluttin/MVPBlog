@@ -25,15 +25,15 @@
 
 # Current alternatives for SPA login.
 
-* Implicit flow is the way to go for single page applications. 
+* Implicit flow is the way to go for single page applications. If you are not comfortable with with the interactive flows, use Resource Owner Password Credentails.
 * Why?
-* The Authorization Code Grant/Flow is for confidential clients. 
-    * The client must keep its stored client secret private.
-    * SPAs are public.
-* The Resource Owner Password Credential Grant/Flow is for highly trusted clients. 
-    * The client must keep its stored user credentials private.
-    * SPAs are public.
-* The Implicit Flow is for public clients.
+* The Authorization Code Grant/Flow is most approriate confidential clients.
+    * The expectation is that client must keep its stored client secret private.
+    * SPA tend to be public.
+* The Resource Owner Password Credential Grant/Flow is most appropriate for highly trusted clients.
+    * The expectation is that the client must keep its stored user credentials private.
+    * SPAs tend to be public.
+* The Implicit Flow is most appropriate for public clients.
     * The client must register its redirection URL.
     * Via domain registration, clients have full ownership of thier URLs.
 

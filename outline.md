@@ -29,10 +29,13 @@
 * Why?
 * The Authorization Code Grant/Flow is most approriate confidential clients.
     * The expectation is that client must keep its stored client secret private.
-    * SPA tend to be public.
+    * SPA are public; thus, they cannot keep the client secret private.
+    * E.g. The client secret would be in the JavaScript source code, which reveals it to savvy end-users.
 * The Resource Owner Password Credential Grant/Flow is most appropriate for highly trusted clients.
     * The expectation is that the client must keep its stored user credentials private.
-    * SPAs tend to be public.
+    * SPAs are public; thus, they cannot keep keep user credentails private.
+    * E.g. The user-agent would need either to store the resource owner's credentails in a Cookie/Local Storage, 
+    * or ask for those credentails before each request to the resource server.
 * The Implicit Flow is most appropriate for public clients.
     * The client must register its redirection URL.
     * Via domain registration, clients have full ownership of thier URLs.

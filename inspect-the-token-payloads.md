@@ -1,11 +1,11 @@
 
 Ultimate Goal: View the authorization code, access token, and id token that Google returns during an OpenId Connect request. 
 
-This is the sample program that Microsoft ASP.NET Core team provides: 
-https://github.com/aspnet/Security/tree/dev/samples/OpenIdConnectSample
+This is a sample OpenID Connect program that ASP.NET Core Security team provides: 
+* https://github.com/aspnet/Security/tree/dev/samples/OpenIdConnectSample
 
 This is the OpenID Connect Specification section that lists the Authorization Code Flow steps: 
-http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps
+* http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps
 
 # Fiddler Analysis
 
@@ -61,6 +61,7 @@ Connection: keep-alive
 
 Response
 
+```
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -83,6 +84,7 @@ Content-Length: 1611
     }
   </style>
   </head><body  ><div id="button_div" class="modal-dialog-buttons"><form name="f" id="f" method="POST" action="http://localhost:5000/signin-oidc"><input type="hidden" name="state" value="CfDJ8EflEPCuZdJHgUYffW9I8S9QcpFGIHbLBcEZ9qY7XA88hVtughcKQ7A0SUjY9zVPfdUw14r4_52B5qTwFW91eTkylhGGDQPfiJH_wIURfy8WhxEJ06XN7qh6kRtxqX8XcxkraWycktJC6srDsORDS1KbCj83j6gzhyVn-Nys6JlcMHqQjeUKS3T1Jt_eeSc5p7Uat4U7XaNivIQmdJgmp2V5apJVCePxxNrzZuv6uLBODBKdbRg0As7mor2P883FkH1f1U3jaZh22CTsM4jYNhftZSnh3CJALW8FZ2kZrBv38OFst4O1RxKtGZ5n0Gfr5NTBQscJ4s9LlDkkRN4sLVpPfmJyrmDaXF6e0Kbu-VKWVs83vrCTC2hQVHDS5XGb8g" /><input type="hidden" name="code" value="4/KsMtdul10lD-QL-jOWqI9eD1MFN-l7BxdVWQ-WSE7GU" /><input type="hidden" name="authuser" value="0" /><input type="hidden" name="session_state" value="2d2c955740244bd6b984b51d68ffab7f5eb6ff9f..69f8" /><input type="hidden" name="prompt" value="none" /><noscript><button id="submit_approve_access" type="submit" tabindex="1" class="goog-buttonset-action" style="overflow:visible;">Continue</button></noscript></form></div><script type="text/javascript">document.forms['f'].submit();</script></body></html>
+```
 
 ### (5) Authorization Server sends the End-User back to the Client with an Authorization Code.
 
@@ -145,6 +147,8 @@ Host: www.googleapis.com
 
 client_id=384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com&client_secret=9y0_fis1pxuDVeJJ3CtK7VbU&code=4%2FKsMtdul10lD-QL-jOWqI9eD1MFN-l7BxdVWQ-WSE7GU&grant_type=authorization_code&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fsignin-oidc
 ```
+
+This is the parsed message body: 
 
 * client_id=384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com
 * client_secret=9y0_fis1pxuDVeJJ3CtK7VbU

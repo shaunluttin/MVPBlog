@@ -17,12 +17,22 @@ ASP.NET Core Security Out-of-the-Box.
     * MicrosoftAccountAuthentication
     * TwitterAuthentication
 
-ASP.NET Core Security Contributions.
+SPA Related ASP.NET Core Security Contributions.
+
+* OpenIddict & AspNet.Security.OpenIdConnect.Server
+* Identity Server 3
 
 Current alternatives for SPA login.
 
-The mechanics of SPA login. 
+* Implicit flow
+
+The mechanics of SPA login.
 
 Implementing SPA login with ASP.NET Core.
 
-Inspecting the SPA login traffic from Windows.
+Inspecting the SPA login traffic from Windows 10.
+
+* Fiddler
+* WireShark
+* ASP.NET Core HTTP Logging
+* IPv6 Capture

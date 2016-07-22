@@ -25,20 +25,33 @@
 
 # Current alternatives for SPA login.
 
-* Implicit flow is the way to go for single page applications. If you are not comfortable with with the interactive flows, use Resource Owner Password Credentails.
+* Implicit flow is the way to go for single page applications. 
+* If you are not comfortable with with the interactive implicit flow, use Resource Owner Password Credentails.
+
 * Why?
-* The Authorization Code Grant/Flow is most approriate confidential clients.
-    * The expectation is that client must keep its stored client secret private.
-    * SPA are public; thus, they cannot keep the client secret private.
-    * E.g. The client secret would be in the JavaScript source code, which reveals it to savvy end-users.
-* The Resource Owner Password Credential Grant/Flow is most appropriate for highly trusted clients.
-    * The expectation is that the client must keep its stored user credentials private.
-    * SPAs are public; thus, they cannot keep keep user credentails private.
-    * E.g. The user-agent would need either to store the resource owner's credentails in a Cookie/Local Storage, 
-    * or ask for those credentails before each request to the resource server.
-* The Implicit Flow is most appropriate for public clients.
-    * The client must register its redirection URL.
-    * Via domain registration, clients have full ownership of thier URLs.
+
+* The Authorization Code Grant/Flow is most approriate **confidential** clients.
+    * Confidential, because we expect the client to keep its client secret private.
+    * If the client is not confidential, a hacker could steal the secret and impersonate the client.
+    * Since SPA are public, they cannot keep their client secret private.
+    * E.g. The client secret would be in JavaScript source code, which is open to savvy end-users.
+    * The authorization code flow does NOT need to have high trust, because it never sees the end-users credentials.
+
+* The Resource Owner Password Credential Grant/Flow is most appropriate for **highly trusted** clients.
+    * Highly trusted, because the end-user gives zer credentials (e.g. username and password) directly to the client. 
+    * If the client is malicious, it could store the end-user's credentails and impersonate zer.
+    * Since SPA are public, their code is open to modification by an untrusted user. 
+    * E.g. Someone modifies the JavaScript in the browser, which stores the end-user's credentials in another site.
+    * Note: we can consider very few clients to be highly trusted.
+
+* The Implicit Flow is appropriate for **non-confidential** and **non-highly trusted** clients.
+    * In this case the implicit flow is the least bad option.
+    * It does not need to be confidential, because there is no client secret involved. 
+    * It does not need to be highly trusted, because it never sees the end-user credentials.
+    * As in the other flows, the client has a redirection URL, which plays a similar role to the client secret.
+        * Having the client secret verifies the client's identity; 
+        * similarly, having control of the redirect URL verifies the client's identity, 
+        * because strict domain registration rules prevent other clients from living there.
 
 # SPA implicit OpenID Connect.
 

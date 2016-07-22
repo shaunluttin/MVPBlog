@@ -11,12 +11,12 @@ http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps
 
 The Authorization Code Flow goes through the following steps.
 
-# (1) Client prepares an Authentication Request containing the desired request parameters.
-# (2) Client sends the request to the Authorization Server.
+### (1) Client prepares an Authentication Request containing the desired request parameters.
+### (2) Client sends the request to the Authorization Server.
 
 Step one and two happen thru a 302 redirection. First, the end-user requests login, then the client redirects us to Google.
 
-## Request
+Request
 
 ```
 GET http://localhost:5000/ HTTP/1.1
@@ -28,7 +28,7 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 ```
 
-## Response
+Response
 
 ```
 HTTP/1.1 302 Found
@@ -40,12 +40,12 @@ Set-Cookie: .AspNetCore.OpenIdConnect.Nonce.CfDJ8EflEPCuZdJHgUYffW9I8S8HaV8gYQQU
 Set-Cookie: .AspNetCore.Correlation.OpenIdConnect.7qk2gpy0FmiU5_dPhzR-253GfgSfmQXu-F4cTHx8RMQ=N; expires=Fri, 22 Jul 2016 20:02:53 GMT; path=/; httponly
 ```
 
-# (3) Authorization Server Authenticates the End-User.
-# (4) Authorization Server obtains End-User Consent/Authorization.
+### (3) Authorization Server Authenticates the End-User.
+### (4) Authorization Server obtains End-User Consent/Authorization.
 
 The is the request that comes out of the above 302 request. The response is Google's sign in page.
 
-## Request
+Request
 
 ```
 GET https://accounts.google.com/o/oauth2/v2/auth?client_id=384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fsignin-oidc&response_type=code&scope=openid%20profile&response_mode=form_post&nonce=636048136738461505.ZThhMWU4NmItMjViZC00ZTBiLTk0OGEtOWE2NDZhMGExZWFhMTI5YzEwZjUtNjQ5NC00NmRmLTg4M2UtZWU3ZTdhZTIyZmMz&state=CfDJ8EflEPCuZdJHgUYffW9I8S9QcpFGIHbLBcEZ9qY7XA88hVtughcKQ7A0SUjY9zVPfdUw14r4_52B5qTwFW91eTkylhGGDQPfiJH_wIURfy8WhxEJ06XN7qh6kRtxqX8XcxkraWycktJC6srDsORDS1KbCj83j6gzhyVn-Nys6JlcMHqQjeUKS3T1Jt_eeSc5p7Uat4U7XaNivIQmdJgmp2V5apJVCePxxNrzZuv6uLBODBKdbRg0As7mor2P883FkH1f1U3jaZh22CTsM4jYNhftZSnh3CJALW8FZ2kZrBv38OFst4O1RxKtGZ5n0Gfr5NTBQscJ4s9LlDkkRN4sLVpPfmJyrmDaXF6e0Kbu-VKWVs83vrCTC2hQVHDS5XGb8g HTTP/1.1
@@ -59,7 +59,7 @@ Cookie: NID=82=b_nTwTiq9yav5BmNelgfLlcj_elv-TchNjXLyouF86Yskd3Fu1FAyQZrgVi0p4Cub
 Connection: keep-alive
 ```
 
-## Response
+Response
 
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8
@@ -84,11 +84,11 @@ Content-Length: 1611
   </style>
   </head><body  ><div id="button_div" class="modal-dialog-buttons"><form name="f" id="f" method="POST" action="http://localhost:5000/signin-oidc"><input type="hidden" name="state" value="CfDJ8EflEPCuZdJHgUYffW9I8S9QcpFGIHbLBcEZ9qY7XA88hVtughcKQ7A0SUjY9zVPfdUw14r4_52B5qTwFW91eTkylhGGDQPfiJH_wIURfy8WhxEJ06XN7qh6kRtxqX8XcxkraWycktJC6srDsORDS1KbCj83j6gzhyVn-Nys6JlcMHqQjeUKS3T1Jt_eeSc5p7Uat4U7XaNivIQmdJgmp2V5apJVCePxxNrzZuv6uLBODBKdbRg0As7mor2P883FkH1f1U3jaZh22CTsM4jYNhftZSnh3CJALW8FZ2kZrBv38OFst4O1RxKtGZ5n0Gfr5NTBQscJ4s9LlDkkRN4sLVpPfmJyrmDaXF6e0Kbu-VKWVs83vrCTC2hQVHDS5XGb8g" /><input type="hidden" name="code" value="4/KsMtdul10lD-QL-jOWqI9eD1MFN-l7BxdVWQ-WSE7GU" /><input type="hidden" name="authuser" value="0" /><input type="hidden" name="session_state" value="2d2c955740244bd6b984b51d68ffab7f5eb6ff9f..69f8" /><input type="hidden" name="prompt" value="none" /><noscript><button id="submit_approve_access" type="submit" tabindex="1" class="goog-buttonset-action" style="overflow:visible;">Continue</button></noscript></form></div><script type="text/javascript">document.forms['f'].submit();</script></body></html>
 
-# (5) Authorization Server sends the End-User back to the Client with an Authorization Code.
+### (5) Authorization Server sends the End-User back to the Client with an Authorization Code.
 
 This is Google's request back to the web client after the user has completed authentication and authorization. 
 
-## Request
+Request
 
 ```
 POST http://localhost:5000/signin-oidc HTTP/1.1
@@ -111,10 +111,9 @@ This is the parsed message body:
 * code=4%2FKsMtdul10lD-QL-jOWqI9eD1MFN-l7BxdVWQ-WSE7GU
 * authuser=0
 * session_state=2d2c955740244bd6b984b51d68ffab7f5eb6ff9f..69f8
+* prompt=none
 
-prompt=none
-
-## Response
+Response
 
 ```
 HTTP/1.1 302 Found
@@ -130,10 +129,10 @@ Set-Cookie: .AspNetCore.OpenIdConnect.Nonce.CfDJ8EflEPCuZdJHgUYffW9I8S8HaV8gYQQU
 Set-Cookie: .AspNetCore.Cookies=CfDJ8EflEPCuZdJHgUYffW9I8S8sPzsQNIfCdq1N6aFjeECscgjk-QddjS7CaT7npqRQn6HYLt3gBwHn_xJVXKuqXNEAoI-li-kZZVH1PqcuX7Q-AwmbG16hN-lQTG7UXMnpqMY5nDnO5TDl8wlHYgPe9LvI-NZlExKp7iSiIp23cLbbsXdukc3QXg4X9l-nP9sq0vHdQfT2rZ-k9Jt_IrrsV14FYMmJbhQmBeJ--Fm8xcJQchGCuIMSNRatdXqiGIvYN-TQ_h8fTMOJ9Wueaon4r8LnrbNufxmdiVzS7Jbd71e63WoO4b0h9RHZLQCPUCprbPaJxEI-D2vcHwj709SV-DzZxHQhkl4WC2G7uVvOsbG8nhX6jNMWA5y94SFLFZPCTha_op6CMPY-6FBC7K3HjVCNSnqCNgs7G3ITWOvPj-20oTDIVnhNM94A2MF88eP0F0HRG9NsNv-3gP2ygkpwAM36Wh1l-hiCqRlKePVI1NB76Xww2_d-sTwBI-TSxlhQGQGo0eeRvr1Lkz92lSdv8DDYqgllfURdjeW-kkF1jm1yVu-J5EY5plCnoMb65FzRnXtEwJqBKBngxGy_j5US054qbVbSWmCdafc_cmzdjmaIpVrdroE9zu0fYTKKjZA_V51Chm_K4T9z7gFb914PXlvxoX9-el_6TjZPZSQY771p1eGjrXDtjym9G3Tdgt5plvLXbociKnW_0gcDm7pzhJOESrmlT1d1DsfR3eYHkg-6m2fEpxdsv5f7nYIBa92XXSc9BJ04pM4w6iS0sJNOkgnajn5ixxd4Lx11JR0DEzXIiWpIzsDPUE9fkC6OKMneENAwoMj-lE5Q_u_aNZTgUJqmfnV8zivwTcq61cDc-wME6koYwo2pJukUPZNE5SIJPHa-CmHWNtQ48yNdqpRXG_dXhgljuw7B-cYBOMneVNk1kJ5m7OhDU6pWi0eyn0_sWtN22249Q6b7cYNbjDxlFxduVNSgMT1BtBsfXwpdqZrKehKL5PlFRPYMnVq-UboEqg1kRaiSpmTvTdCyIrra8jomHjScpnySLYLecFomoC-xgKxhztuIVp35yjpYTfe-u8cOzRMIX68FcmYYF6WRXPkpRghtOARIuQiZTPL3XqhPkMF5WaQPDMAJFnjv_vAncIqe6Y6KwTrL7nozSSyFQC_4yH4aT9-FMhM3oYMwjXkVCR1UsgSwfpYSexn_wHRfOpGrHtJRb1WNNfTcpfB8MU9ukEO8b9SWsPHWx3rxQH4wJ2KyiqRT8xRKa08D7fU6JOAKeBeP7uKy_OuCHdX3mjQpE3nnstpaYB-ThF_z5H3EnA1qml7ocOKZUAe9GvD1dKI72xmEl53ePXyGDQVORgnaiJqSV7oXDumNM4r7qTWr9SUK5W5UvCTuO_RUr4H4AkDhUHd-eN5AmqyojMsR2k478MkOP_8gwwZp30uYA2_ipPJmERgQcf7MCuhOKhtrXTU4b1BKRVRbtf4XqrERFpyeO0EdsnJayto4wA2gzuqy-SJXUyy0EDoCvCg7ZPUMEZVdzVPOernSB-BIyWXgl1RVybm484w_5mTLRi2_UiDRy2OPvqj7rrnBY7HfDY2FLqlWSVK-KgHNPygWkCZt7oIB-638MoFaGzBTH8FpK-EXiREYTDgjLiujSiA8VAirMmmG7-XEsQak3CX95NM3NPAs3zn4cvWSnxC-EP5gX-NNRglPPY-LSGi8ctHzir_2zfULCub0021374Di1aM_GvlJ1fF6lZBOW9Lah8v8wa7jATzri0xAL3ZpYYWdgkpMMDbllaDCaeEKtNITW269-yncn4Z3HBps4dmpz0lxH22QFvcmHLiyWJxmWMh7jWYcHQAZc5zUmIyJy8lf_dNgDi8wsktlFCWqt9WbetXhgvyuvwjB6pXUT4C2GtJDmNKx-0kwEFxesa1vRL8o6LIb9Swy2ZHh4kxIkDmL-R2d2ckOn_V8WEyF7YxVf3RZJHT2qjO3mo_qsFcjs_uXnix3B5x8vGpXsAA-RYG09UnfUzow6MlGe8kD6QAQPClbBB0mCl-8kpyWTVNHoqjdMNZSNI2n-lGRwASmET8P39Jf1b4IsQvuJ_HCNOxozndEd9Yewj7aTclbBgFLEGWA8usAiARpqwP-LgSP-NZpWtjKxwYgVcgqneJQk8vS60DjnBiSXnferptiWaEDEgmBAQnzNAGVUUHI5Ez9qrnTRKQEPeULZBuijitEy2cQCsoOCTL8owUxNHB8ZwFYpI-hlsS5hVJlJoSYbidqTBqaCLlgGQucVGKyAOoHdJbTBEx2h3TJGubuNqSdPp0ZYtvKkPKN7ctM74AFLQejkKJ5ipidVu7oFjY36MIsWF6vef-b9Rypk98iiUCzEyl48fHHxTpmqvRBy18LtiPOBf40KVW3-nvB0X6wDsOkXXK7jcko_0wvtsJfmtEj0ZWDCta1qQx5uffnY9I4JoE22MiK6T0NiZ64VGg7ZLrjGGl--wff5iVtF_Mm212dnHtlWHF1PT_XuQDJKxQrg12s_I0mlxqD1fpbYCVWvWc8LTceBazIR-UgJz3pjqARl69wzWMNmGgmkX7AINC4XAV9dxG6U2-B6xrHYnsq_1QiALdjRrp2kS9W1zJXJkd6EZxvzdAABk1zYnZWAG8FITq0MzinQph-KGOuJW7FaiDSHtlOFp7y6om8DjEbXXUHX-aB5dUSs9yvb3GZiDO26IwIKRuUJXdJA1aQ_XgNsalTSwSM0ICnr6cgz8eSQOHo8KTywS_yBVfDj8qXYa9WVfF_HwAnYbm4JxuTSzFFJJzQX4gVdHU9zc1DasVxVTQfnXOaQQUV6eOoNEM9XjRN3aK-VcQHH1nRaVrCd4tcozbpAWSNzUAiUF9VpIt_fJ1-2vj415gGOp47Eq-GJyYBogzjLM2P1I6NvmV7uFoHaq0s0IhrTa6awIap8EUYxJDYahcj7VpGoKuCXuAQVuhnpsKQmWAyTY6pssqHvvEjesXo6Xm6SOw0RmC64zpAjKVmrHHRH827Zfgo-gNHe2HxvID6ibVZ8VJDgOoAS6xCInZVwAqs2yfjDO7nTtr27m3hgG82klsVNrJkocFQjk5szDMlWqTJOD0ZIWxnxGocEUj-KmqzXtGllPpw-BFIzB4E8un6w6q5nRzLgtAyOTtjxHPf-aeaN-076_xKsQI2QS3HAUJMd6XInawDLilLk8FoMq-hgBymdF6v5IK6j_GQs6hxFKfe0eLNpOc6CwSWjbRJGZhDa73uGnEBCbH3ZRj_8NAd7AOk0M-peY-j8anESv1QJfLArBQZMS2vs1bo5bD-bsBXZmWsZwca2TBxCaDaL1tjy63HF7VfgP4; path=/; httponly
 ```
 
-# (6) Client requests a response using the Authorization Code at the Token Endpoint.
-# (7) Client receives a response that contains an ID Token and Access Token in the response body.
+### (6) Client requests a response using the Authorization Code at the Token Endpoint.
+### (7) Client receives a response that contains an ID Token and Access Token in the response body.
 
-## Request
+Request
 
 ```
 POST https://www.googleapis.com/oauth2/v4/token HTTP/1.1
@@ -153,7 +152,7 @@ client_id=384233509265-gv8949ukmpohkl092l84dbs2gpga7fa2.apps.googleusercontent.c
 * grant_type=authorization_code
 * redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fsignin-oidc
 
-## Response
+Response
 
 ```
 HTTP/1.1 200 OK
@@ -180,7 +179,7 @@ Content-Length: 1517
 }
 ```
 
-# (8) Client validates the ID token and retrieves the End-User's Subject Identifier.
+### (8) Client validates the ID token and retrieves the End-User's Subject Identifier.
 
 Both the access_token and the id_token as JSON Web Tokens. We can parse them.
 

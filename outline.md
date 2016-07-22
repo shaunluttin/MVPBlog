@@ -37,15 +37,29 @@
     * The client must register its redirection URL.
     * Via domain registration, clients have full ownership of thier URLs.
 
-# The mechanics of SPA authentication.
+# SPA implicit OpenID Connect.
 
-* OAuth Credential Types
-* OpenID Connect Flows
+Anatomy
+
+* relying party
+* redirect uri
+* user agent
+* resource owner
+* authorization server / authorization endpoint
+* access token
+* id token
+* resource server
+
+Physiology
+
+* authentication
+* authorization
+* redirection
 
 # The mechanics of SPA resource access. 
 
-* Cookies
-* Bearer Tokens
+* Cookies: access a resource server at a single domain
+* Bearer Tokens & Local/Session Storage: access resource servers at multiple domains
 
 # Implementing OpenIdConnect SPA login with ASP.NET Core.
 

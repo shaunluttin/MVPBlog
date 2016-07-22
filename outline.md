@@ -1,7 +1,19 @@
 
-The history of SPA login. 
+The history of SPA login.
 
-Current alternatives for SPA login. 
+ASP.NET Core Security Out-of-the-Box.
+
+* Token storage & transport: CookieAuthentication vs JwtBearerAuthentication
+* Token acquisition: OAuthAuthentication vs OpenIdConnectAuthentication
+* Token acquisition defaults:
+    * GoogleAuthentication
+    * FacebookAuthentication 
+    * MicrosoftAccountAuthentication
+    * TwitterAuthentication
+
+ASP.NET Core Security Contributions.
+
+Current alternatives for SPA login.
 
 The mechanics of SPA login. 
 

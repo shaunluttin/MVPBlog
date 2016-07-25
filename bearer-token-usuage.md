@@ -16,7 +16,7 @@ Bearer tokens:
 * use the `Authentication: Bearer some_value` HTTP header
 * are stored in the browser via JavaScript
 * are added manually via JavaScript to HTTP Requests
-* requires JavaScript
+* require JavaScript
 
 Cookies authentication is appropriate when we do NOT have the ability to set the HTTP Authorization header. For instance, when a user clicks a regular hyperlink, we do not have the opportunity to set the Authorization header. Hyperlinks just don't do that. If we want to have hyperlinks that make secure requests, we can use Cookie authorization, and rely on the web browser to automatically add the HTTP Cookie header to each request.
 

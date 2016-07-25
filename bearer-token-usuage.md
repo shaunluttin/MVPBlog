@@ -9,17 +9,12 @@ Both Cookies and Bearer tokens:
 Cookies:
 * use the `Cookie: some_value` HTTP header
 * are stored in the web browser via JavaScript or via an HTTP Response header
-    * JS: `document.cookie = 'cookie_name=cookie_value`
-    * HTTP: `Set-Cookie: cookie_name=cookie_value`
 * are added automatically via the web browser to every HTTP Request to the cookie's URL
-* can also be added manually via JavaScript
 * does not require JavaScript
 
 Bearer tokens:
 * use the `Authentication: Bearer some_value` HTTP header
 * are stored in the browser via JavaScript
-    * JS: `localStorage.setItem('some_key', 'some_value')`
-    * JS: `sessionStorage.setItem('some_key', 'some_value')` 
 * are added manually via JavaScript to HTTP Requests
 * requires JavaScript
 

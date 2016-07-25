@@ -15,6 +15,8 @@ Since we're using Google to authenticate, we'll use their [recommended steps and
 1. Obtain OAuth 2.0 credentials from the Google API Console.
 2. Obtain an access token from the Google Authorization Server.
 
+For step (1) we need an API Key and a Client ID. Specifically, we need a Browser Api Key and a Web Application Client ID. 
+
 [0]: https://developers.google.com/identity/protocols/OpenIDConnect
 
 [1]: http://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowSteps

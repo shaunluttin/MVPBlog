@@ -89,13 +89,18 @@ Physiology
 
 # Implementing OpenIdConnect SPA login with ASP.NET Core.
 
-* Using Google as an identity provider
-    * ID Token from Google
-    * Access Token for Google's resource servers
-* Using OpenIddict as an identity provider
-    * ID Token from your servers
-    * Access Token for your resource servers
-* Checking the bearer token at your resource servers
+## Authenticate a user
+
+* request an `id_token` from Google.
+* produce an `id_token` with OpenIddict.
+* consume an `id_token` with ASP.NET Core security.
+
+## Access a user's protected resources
+
+* request an `access_token` from Google.
+* use an `access_token` with Google.
+* produce an `access_token` with OpenIddict.
+* consume an `access_token` with OpenIddict.
 
 # Inspecting the SPA login traffic from Windows 10.
 

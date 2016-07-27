@@ -10,3 +10,9 @@
 * 22 July 2016, 2 hours (Fiddler analysis)
 * 25 July 2016, 5 hours (Token usage)
 * 25 July 2016, 6 hours (Authorization server sample)
+* -----
+* 32 hours total to date. 
+* New decision: 
+    * start to wrap up research and 
+    * complete implementation by approx 50 hours cumulative total.
+* -----

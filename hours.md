@@ -17,4 +17,5 @@
     * complete implementation by approx 50 hours cumulative total.
 * -----
 27 July 2016, 3 hours (add account controller)
-27 July 2016, 10 hours (add aurelia application login/logout)
+28 July 2016, 10 hours (add aurelia application login/logout)
+29 July 2016, 5 hours (refactor into a plugin)

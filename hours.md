@@ -19,3 +19,5 @@
 27 July 2016, 3 hours (add account controller)
 28 July 2016, 10 hours (add aurelia application login/logout)
 29 July 2016, 5 hours (refactor into a plugin)
+03 Aug 2016, 2 hours (add tests)
+04 Aug 2016, 3 hours (refactor, add further tests)

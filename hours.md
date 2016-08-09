@@ -21,3 +21,4 @@
 29 July 2016, 5 hours (refactor into a plugin)
 03 Aug 2016, 2 hours (add tests)
 04 Aug 2016, 3 hours (refactor, add further tests)
+08 Aug 2016, 7 hours (test coverage of client and provider)

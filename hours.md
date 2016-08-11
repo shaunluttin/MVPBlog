@@ -22,3 +22,6 @@
 03 Aug 2016, 2 hours (add tests)
 04 Aug 2016, 3 hours (refactor, add further tests)
 08 Aug 2016, 7 hours (test coverage of client and provider)
+08 Aug 2016, 8 hours (unit testing and refactoring)
+09 Aug 2016, 8 hours (unit testing and refactoring)
+10 Aug 2016, 8 hours (unit testing and refactoring)

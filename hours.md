@@ -25,3 +25,5 @@
 08 Aug 2016, 8 hours (unit testing and refactoring)
 09 Aug 2016, 8 hours (unit testing and refactoring)
 10 Aug 2016, 8 hours (unit testing and refactoring)
+15 Aug 2016, 3 hours (finish unit testing existing features)
+16 Aug 2016, 10 hours (start packings, fix bugs in persistance)
